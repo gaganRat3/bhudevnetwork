@@ -316,7 +316,7 @@
     }
     .profile-card img {
       width: 100%;
-      height: 240px;
+      height: 380px;
       object-fit: cover;
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
@@ -327,7 +327,11 @@
     .profile-image-wrapper {
       position: relative;
       overflow: hidden;
-      height: 240px;
+      height: 380px;
+      background: #faf5f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .profile-image-overlay {
       position: absolute;
@@ -500,21 +504,36 @@
       border-color: #25d366;
       transform: translateY(-2px);
     }
-    .premium-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: linear-gradient(135deg, #ffd89b 0%, #ffb347 50%, #ff9a56 100%);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 5px 16px;
-      border-radius: 20px;
-      z-index: 3;
-      box-shadow: 0 4px 12px rgba(255,152,0,0.3);
-      letter-spacing: 0.5px;
+    .mobile-search-toggle {
+      display: none;
+      width: 100%;
+      padding: 14px 16px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
       border: none;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 16px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .mobile-search-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    }
+    .mobile-search-toggle i {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mobile-search-toggle.active i {
+      transform: rotate(180deg);
+    }
+    .advanced-search-wrapper {
+      display: contents;
     }
     @media (max-width: 1024px) {
       .container { 
@@ -583,13 +602,13 @@
         flex-shrink: 0;
       }
       .profile-card {
-        min-height: 420px;
+        min-height: 540px;
       }
       .profile-image-wrapper {
-        height: 200px;
+        height: 320px;
       }
       .profile-card img {
-        height: 200px;
+        height: 320px;
       }
     }
     @media (max-width: 768px) {
@@ -598,10 +617,23 @@
         gap: 16px;
         padding: 16px 12px;
       }
+      .mobile-search-toggle {
+        display: flex !important;
+      }
       .advanced-search {
         width: 100%;
         padding: 20px 16px;
         border-radius: 16px;
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .advanced-search.mobile-open {
+        display: flex;
+        max-height: 2000px;
+        opacity: 1;
       }
       .profile-grid { 
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -614,13 +646,13 @@
         font-size: 24px;
       }
       .profile-card {
-        min-height: 380px;
+        min-height: 500px;
       }
       .profile-image-wrapper {
-        height: 180px;
+        height: 300px;
       }
       .profile-card img {
-        height: 180px;
+        height: 300px;
       }
       .profile-info {
         padding: 16px 14px;
@@ -654,6 +686,9 @@
         gap: 16px;
         padding: 16px 12px;
       }
+      .mobile-search-toggle {
+        display: flex !important;
+      }
       .advanced-search { 
         position: static; 
         width: 100%; 
@@ -663,6 +698,16 @@
         padding: 18px 14px;
         border-radius: 16px;
         gap: 14px;
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .advanced-search.mobile-open {
+        display: flex;
+        max-height: 2000px;
+        opacity: 1;
       }
       .advanced-search h3 {
         font-size: 16px;
@@ -720,13 +765,14 @@
         gap: 16px;
       }
       .profile-card {
-        min-height: 360px;
+        min-height: 420px;
       }
       .profile-image-wrapper {
-        height: 160px;
+        height: 320px;
       }
       .profile-card img {
-        height: 160px;
+        height: 320px;
+        object-position: center top;
       }
       .profile-info {
         padding: 14px 12px;
@@ -784,11 +830,24 @@
         gap: 14px;
         padding: 12px 10px;
       }
+      .mobile-search-toggle {
+        display: flex !important;
+      }
       .advanced-search { 
         width: 100%;
         padding: 16px 12px;
         border-radius: 14px;
         gap: 12px;
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .advanced-search.mobile-open {
+        display: flex;
+        max-height: 2000px;
+        opacity: 1;
       }
       .advanced-search h3 {
         font-size: 15px;
@@ -825,13 +884,14 @@
         gap: 14px;
       }
       .profile-card {
-        min-height: 340px;
+        min-height: 380px;
       }
       .profile-image-wrapper {
-        height: 140px;
+        height: 280px;
       }
       .profile-card img {
-        height: 140px;
+        height: 280px;
+        object-position: center top;
       }
       .profile-info {
         padding: 12px 10px;
@@ -870,6 +930,17 @@
       .profile-actions button.icon {
         flex: 1 1 calc(50% - 2px);
         min-width: 50px;
+      }
+    }
+    @media (min-width: 769px) {
+      .advanced-search {
+        display: flex !important;
+        max-height: none !important;
+        opacity: 1 !important;
+        position: sticky !important;
+      }
+      .mobile-search-toggle {
+        display: none !important;
       }
     }
   </style>
@@ -962,8 +1033,12 @@
     <p>Discover verified profiles of compatible members</p>
   </div>
     <div class="container">
+      <!-- Mobile Search Toggle Button -->
+      <button type="button" class="mobile-search-toggle" onclick="toggleMobileSearch()">
+        <i class="fas fa-chevron-down"></i> Advanced Search
+      </button>
       <!-- Advanced Search Sidebar -->
-      <form class="advanced-search">
+      <form class="advanced-search" id="advancedSearchForm">
         <div>
           <h3><i class="fas fa-filter"></i> Advanced Search</h3>
           <p class="subtitle">Find your perfect match</p>
@@ -1200,6 +1275,27 @@
       moreFilters.classList.toggle('show');
       toggleBtn.classList.toggle('expanded');
     }
+    
+    function toggleMobileSearch() {
+      const advancedSearch = document.getElementById('advancedSearchForm');
+      const toggleBtn = document.querySelector('.mobile-search-toggle');
+      advancedSearch.classList.toggle('mobile-open');
+      toggleBtn.classList.toggle('active');
+    }
+    
+    // Close search when clicking outside on mobile
+    document.addEventListener('click', function(event) {
+      const advancedSearch = document.getElementById('advancedSearchForm');
+      const toggleBtn = document.querySelector('.mobile-search-toggle');
+      const isClickInside = advancedSearch.contains(event.target) || toggleBtn.contains(event.target);
+      
+      if (!isClickInside && advancedSearch.classList.contains('mobile-open')) {
+        if (window.innerWidth <= 640) {
+          advancedSearch.classList.remove('mobile-open');
+          toggleBtn.classList.remove('active');
+        }
+      }
+    });
   </script>
 </body>
 </html>
