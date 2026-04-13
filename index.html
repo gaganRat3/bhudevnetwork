@@ -290,6 +290,13 @@
     .hamburger { display: flex; }
     .btn-primary { padding: 8px 16px; font-size: 12px; }
     .nav { position: relative; }
+    .search-members-dropdown { width: 100%; display: flex; flex-direction: column; }
+    .dropdown-toggle { width: 100%; text-align: left; padding: 12px 16px; font-size: 11px; border-bottom: 1px solid #E8E4F3; color: #5A5A7A; background: none; font-weight: 500; cursor: pointer; display: block; }
+    .dropdown-toggle:after { content: '\25BC'; float: right; font-size: 10px; color: #7F77DD; }
+    .dropdown-menu { width: 100%; background: #FAFBFC; box-shadow: none; border: none; position: static; display: none; flex-direction: column; padding: 0; }
+    .search-members-dropdown.open .dropdown-menu { display: flex; }
+    .dropdown-menu a { width: 100%; padding: 12px 32px; font-size: 11px; text-align: left; border-bottom: 1px solid #E8E4F3; color: #5A5A7A; background: none; font-weight: 400; }
+    .dropdown-menu a:last-child { border-bottom: none; }
     
     .secondary-nav { padding: 0 16px; }
     .secondary-nav-item { padding: 12px 12px; font-size: 11px; min-width: 100px; }
@@ -813,12 +820,16 @@
 
   // Dropdown menu functionality
   const dropdownToggle = document.querySelector('.dropdown-toggle');
-  const dropdownMenu = document.querySelector('.dropdown-menu');
+  const searchMembersDropdown = document.querySelector('.search-members-dropdown');
   
   dropdownToggle.addEventListener('click', (e) => {
     e.stopPropagation();
-    dropdownToggle.classList.toggle('active');
-    dropdownMenu.classList.toggle('active');
+    searchMembersDropdown.classList.toggle('open');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', () => {
+    searchMembersDropdown.classList.remove('open');
   });
   
   // Close dropdown when clicking on a menu item
